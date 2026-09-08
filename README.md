@@ -2,8 +2,6 @@
 
 I'm building a simple HTTP server in Java from scratch to understand how servers, TCP connections, sockets, and HTTP work.
 
-The goal is to **understand what I'm building**, not just copy code.
-
 ---
 
 ## 1. What are we building?
