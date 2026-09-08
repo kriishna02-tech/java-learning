@@ -1,19 +1,32 @@
+
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class Main{
-    public static void main(String[] args)throws IOException {
-        ServerSocket  serverSocket  =new ServerSocket(8080);
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(8080);
         System.out.println("Server stated on port 8080");
 
         var clientSocket = serverSocket.accept();
         System.out.println("server connected");
+        var input = clientSocket.getInputStream();
+
+        int data;
+        do {
+            data = input.read();
+
+            if (data != -1) {
+                System.out.print((char) data);
+            }
+
+        } while (data != -1);
 
         var output = clientSocket.getOutputStream();
 
         // output.write("Hello java server !".getBytes());
         output.write("HTTP/1.1 200 OK\r\n\r\nHello java server!".getBytes());
-        output.flush(); 
+        output.flush();
         clientSocket.close();
     }
 }
